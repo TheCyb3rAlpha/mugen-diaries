@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MUGEN Diaries · The Scorecard</title>
+<meta name="description" content="What MUGEN has actually caught, honestly: blind results (zero delivered source-to-sink chains on hand-checked CVE sites), development-target end-to-end wins, synthetic numbers, and one false positive.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='12'%20fill='none'%20stroke='%2379c2db'%20stroke-width='2'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='5.5'%20fill='%23080a12'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div id="reading-progress" aria-hidden="true"></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<div class="topbar">
+  <span class="kicker"><a href="index.html">The MUGEN Diaries · a build log</a></span>
+  <button class="toggle" id="themeToggle" aria-label="Toggle color theme">◐</button>
+</div>
+
+<header class="post">
+  <div class="glow" aria-hidden="true"></div>
+  <p class="post-no">THE SCORECARD<span class="dot"> · </span>WHAT IT ACTUALLY CAUGHT</p>
+  <h1>The scorecard</h1>
+  <p class="dek">Every detection, sorted by how it was earned: blind and answer-hidden, or built to catch a bug that was already known. The distance between those two columns is the honest measure of the tool.</p>
+  <p class="meta">Compiled by Claude<span class="sep">·</span>from the project's own records<span class="sep">·</span>last updated 27 July 2026</p>
+</header>
+
+<main class="wrap">
+  <div class="body">
+    <p class="first">A tool is worth exactly what it finds on something it has never seen. So this page keeps two kinds of result apart and never blurs them. The first is the <em>blind</em> test: real binaries, the known vulnerability hidden from the tool, no human steering. The second is the honest asterisk on every impressive demo, a detector built <em>after</em> the bug was known, aimed at the one binary it was meant to catch. Both are here. The gap is the story.</p>
+
+    <p class="pull">Blind and answer-hidden, MUGEN delivered zero complete source-to-sink chains on the three CVE sites checked by hand. Every end-to-end catch it can show was engineered against a binary whose bug was already known.</p>
+
+    <div class="sc-legend" aria-hidden="false">
+      <span><span class="v v-full">full chain</span> source to sink, delivered</span>
+      <span><span class="v v-surf">surfaced</span> right function, no chain</span>
+      <span><span class="v v-part">partial</span> site seen, not delivered</span>
+      <span><span class="v v-miss">miss</span> not detected</span>
+      <span><span class="v v-fp">false positive</span> looked real, wasn't</span>
+      <span><span class="v v-syn">synthetic</span> harness, not the field</span>
+    </div>
+  </div>
+</main>
+
+<section class="sc-wrap">
+
+  <h2>By the numbers</h2>
+  <p class="sc-lede">Three pictures of the same split. The first two describe the blind backtest; the third is the whole page in one frame: what the tool finds when it has never seen the answer, against what it finds when the answer was known in advance.</p>
+
+  <div class="sc-charts">
+
+    <div class="chart">
+      <h3>Blind outcomes · 11 anchored targets</h3>
+      <svg viewBox="0 0 320 176" role="img" aria-label="Across 11 anchored targets: 0 full chains, 3 surfaced, 3 partial, 5 missed.">
+        <text class="c-cat" x="8" y="30">full</text>
+        <rect class="bar-track" x="84" y="15" width="200" height="22" rx="4"/>
+        <rect class="bar-full" x="84" y="15" width="0" height="22" rx="4"/>
+        <text class="c-num" x="310" y="30" text-anchor="end">0</text>
+
+        <text class="c-cat" x="8" y="70">surfaced</text>
+        <rect class="bar-track" x="84" y="55" width="200" height="22" rx="4"/>
+        <rect class="bar-surf" x="84" y="55" width="120" height="22" rx="4"/>
+        <text class="c-num" x="310" y="70" text-anchor="end">3</text>
+
+        <text class="c-cat" x="8" y="110">partial</text>
+        <rect class="bar-track" x="84" y="95" width="200" height="22" rx="4"/>
+        <rect class="bar-part" x="84" y="95" width="120" height="22" rx="4"/>
+        <text class="c-num" x="310" y="110" text-anchor="end">3</text>
+
+        <text class="c-cat" x="8" y="150">miss</text>
+        <rect class="bar-track" x="84" y="135" width="200" height="22" rx="4"/>
+        <rect class="bar-miss" x="84" y="135" width="200" height="22" rx="4"/>
+        <text class="c-num" x="310" y="150" text-anchor="end">5</text>
+      </svg>
+      <p class="c-cap">Not one produced a complete chain. Surfaced plus partial, six in all, means the right function was reached; the five misses found nothing at the site at all.</p>
+    </div>
+
+    <div class="chart">
+      <h3>What became of the 41 acquired</h3>
+      <svg viewBox="0 0 320 118" role="img" aria-label="Of 41 acquired binaries, 26 were too stripped to anchor, 4 timed out, and 11 were anchored and scored.">
+        <rect class="bar-drop" x="8" y="20" width="193" height="34" rx="4"/>
+        <rect class="bar-part" x="201" y="20" width="30" height="34"/>
+        <rect class="bar-full" x="231" y="20" width="81" height="34" rx="4"/>
+        <text class="c-num" x="104" y="41" text-anchor="middle">26</text>
+        <text class="c-innum" x="216" y="41" text-anchor="middle">4</text>
+        <text class="c-innum" x="271" y="41" text-anchor="middle">11</text>
+        <text class="c-cat" x="8" y="76">too stripped</text>
+        <text class="c-cat" x="150" y="76">timed out</text>
+        <text class="c-cat" x="238" y="76">anchored &amp; scored</text>
+      </svg>
+      <p class="c-cap">Only eleven of the forty-one binaries could be anchored at all. Twenty-six were stripped past the point the tool could even name the vulnerable function, which describes most real software in the wild.</p>
+    </div>
+
+    <div class="chart wide">
+      <h3>The gap · complete source-to-sink chains delivered</h3>
+      <svg viewBox="0 0 320 132" role="img" aria-label="Blind and answer-hidden: 0 complete chains. Built after the bug was known: 2 complete chains.">
+        <text class="c-cat" x="8" y="18">Blind, answer-hidden</text>
+        <rect class="bar-track" x="8" y="26" width="258" height="24" rx="5"/>
+        <text class="c-num" x="312" y="44" text-anchor="end">0</text>
+        <text class="c-sub" x="8" y="66">complete chains · 3 sites hand-checked</text>
+
+        <text class="c-cat" x="8" y="96">Built after the bug was known</text>
+        <rect class="bar-track" x="8" y="104" width="258" height="24" rx="5"/>
+        <rect class="bar-full" x="8" y="104" width="258" height="24" rx="5"/>
+        <text class="c-num" x="312" y="122" text-anchor="end">2</text>
+      </svg>
+      <p class="c-cap">The distance between these two bars is the honest measure of the tool. Blind, it delivered zero complete source-to-sink chains. Every complete chain it can show was engineered to catch a bug that was already public.</p>
+    </div>
+
+  </div>
+
+  <h2>The honest bar: a blind backtest</h2>
+  <p class="sc-lede">Real third-party binaries, each with a known CVE the tool was not told about. Static analysis only, zero model tokens. Forty-two on the manifest, forty-one acquired; of those, twenty-six were stripped past the point the tool could even name the vulnerable function, four timed out, and eleven were anchored and scored. Here are all eleven.</p>
+
+  <div class="sc-stats">
+    <div class="sc-stat"><div class="n bad">0 / 3</div><div class="l">complete source-to-sink chains, hand-verified</div></div>
+    <div class="sc-stat"><div class="n">6 / 11</div><div class="l">right function surfaced</div></div>
+    <div class="sc-stat"><div class="n mid">~70%</div><div class="l">too stripped to even anchor the function</div></div>
+    <div class="sc-stat"><div class="n">0</div><div class="l">model tokens spent</div></div>
+  </div>
+
+  <div class="sc-table-wrap">
+    <table class="sc">
+      <thead><tr><th>CVE</th><th>Target</th><th>Class</th><th>Result</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-28506" target="_blank" rel="noopener">CVE-2022-28506</a></td><td>giflib (GIF decoder)</td><td>out-of-bounds read</td><td><span class="v v-part">partial</span> exact site detected, then suppressed before the operator saw it; pointed at a nearby <code>malloc</code></td><td class="num">22s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-12900" target="_blank" rel="noopener">CVE-2019-12900</a></td><td>bzip2 (decompression)</td><td>CWE-787 OOB write</td><td><span class="v v-surf">surfaced</span> function ranked #2 of 49; the write site itself never flagged</td><td class="num">26s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-37434" target="_blank" rel="noopener">CVE-2022-37434</a></td><td>zlib (compression)</td><td>CWE-787</td><td><span class="v v-surf">surfaced</span> function ranked 14 of 182 by class signature</td><td class="num">37s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-4899" target="_blank" rel="noopener">CVE-2022-4899</a></td><td>Zstandard (compression)</td><td>CWE-125 OOB read</td><td><span class="v v-surf">surfaced</span> the anchor function, via a solver-proven path</td><td class="num">~110s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-29457" target="_blank" rel="noopener">CVE-2021-29457</a></td><td>Exiv2 (image metadata)</td><td>CWE-122 heap overflow</td><td><span class="v v-part">partial</span> sinks present at the anchor but never ranked or prompted</td><td class="num">448s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2015-8863" target="_blank" rel="noopener">CVE-2015-8863</a></td><td>jq (JSON tool)</td><td>CWE-122</td><td><span class="v v-part">partial</span> 13 sinks at the site, but the ranking table came back empty</td><td class="num">313s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-7317" target="_blank" rel="noopener">CVE-2019-7317</a></td><td>libpng (PNG decoder)</td><td>CWE-416 use-after-free</td><td><span class="v v-miss">miss</span> the free was flagged, but no UAF chain was ever assembled; entry point sank to rank 180 of 504</td><td class="num">65s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-2800" target="_blank" rel="noopener">CVE-2017-2800</a></td><td>wolfSSL (TLS)</td><td>CWE-787</td><td><span class="v v-miss">miss</span> zero dangerous calls at the anchor; sink class not modeled</td><td class="num">246s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-28805" target="_blank" rel="noopener">CVE-2022-28805</a></td><td>Lua (interpreter)</td><td>CWE-125</td><td><span class="v v-miss">miss</span> zero sinks at the vulnerable function</td><td class="num">345s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2016-7480" target="_blank" rel="noopener">CVE-2016-7480</a></td><td>PHP (engine)</td><td>CWE-843 type confusion</td><td><span class="v v-miss">miss</span> type confusion is not a modeled bug class</td><td class="num">1080s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-1311" target="_blank" rel="noopener">CVE-2018-1311</a></td><td>Xerces-C (XML parser)</td><td>CWE-416 use-after-free</td><td><span class="v v-miss">miss</span> zero free events at the anchor</td><td class="num">325s</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sc-note">Not one delivered a complete source-to-sink path to the operator. On the three sites checked by hand, the count was <strong>zero</strong>. And these eleven are the easy slice: the twenty-six that were dropped were stripped of symbols, which describes most real software in the wild. The zero-token figure is literal: this run generated the operator's prompts without ever calling the model. The model, when it does run, only re-checks what the static pipeline already surfaced, so it could not have rescued a site the pipeline missed.</p>
+
+  <h2>A kernel driver, calibrated</h2>
+  <p class="sc-lede">A single real target where the answer was known in advance, run with the debug symbols the tool almost never has in the field.</p>
+  <div class="sc-table-wrap">
+    <table class="sc">
+      <thead><tr><th>CVE</th><th>Target</th><th>Class</th><th>Result</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-38141" target="_blank" rel="noopener">CVE-2024-38141</a></td><td>afd.sys (Windows kernel driver)</td><td>CWE-416 use-after-free</td><td><span class="v v-surf">surfaced</span> 12 of 15 patched functions reached the operator; function-level, not a delivered chain</td><td class="num">36s</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sc-note"><strong>Surfaced</strong> means the patched function reached the top of the pile. It does not mean a source-to-sink chain was drawn. Twelve surfaced, two fell past the ranking cut, and one missed on a name mismatch. And this ran with a version-matched symbol file that, by the project's own note, multiplies the detector's reach many times over what a stripped binary allows.</p>
+
+  <h2>End-to-end, but not blind</h2>
+  <p class="sc-lede">End-to-end catches on genuine public exploit-database cases, delivered to the operator: at the #1 prompt in one case, lower in the queue or through a dedicated flag in the others. The caveat is the whole point of the section header. Each detector was built <em>after</em> the bug was known and aimed at that specific binary. This is "can the tool be made to catch a known bug end-to-end," not "point it at something new."</p>
+  <div class="sc-table-wrap">
+    <table class="sc">
+      <thead><tr><th>CVE / EDB</th><th>Target</th><th>Class</th><th>Result</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-12518" target="_blank" rel="noopener">CVE-2019-12518</a><br><a href="https://www.exploit-db.com/exploits/48092" target="_blank" rel="noopener">EDB-48092</a></td><td>Anviz CrossChex</td><td>CWE-121 stack overflow, UDP read</td><td><span class="v v-full">full chain</span> the vulnerable callback promoted to the operator's #1 prompt; a second network sink in the same product was later confirmed by actually crashing it</td><td class="num">538s</td></tr>
+        <tr><td class="cve"><a href="https://www.exploit-db.com/exploits/50999" target="_blank" rel="noopener">EDB-50999</a></td><td>Easy Chat Server</td><td>CWE-121 stack overflow via SEH</td><td><span class="v v-full">full chain</span> the operator prompt lands directly on the sink, though ranked #26 in the queue rather than #1</td><td class="num">45s</td></tr>
+        <tr><td class="cve"><a href="https://www.exploit-db.com/exploits/50516" target="_blank" rel="noopener">EDB-50516</a></td><td>Xlight FTP Server</td><td>CWE-121 stack overflow, GUI dialog</td><td><span class="v v-part">partial</span> a detector flagged a co-located dialog overflow and delivered it as a HIGH, but the exact site the public exploit crashes was missed by the extent heuristic</td><td class="num nr">n/r</td></tr>
+        <tr><td class="cve"><a href="https://www.exploit-db.com/exploits/50536" target="_blank" rel="noopener">EDB-50536</a></td><td>Modbus Slave</td><td>CWE-121 stack overflow, decode loop</td><td><span class="v v-part">partial</span> the root-cause site is detected and even built into candidate chains, but the solver skips this bug shape, so it is never delivered as a top prompt</td><td class="num nr">n/r</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sc-note">Read that table with the header in mind. Only the first, the access-control client, reaches the operator's #1 prompt. The chat server is delivered end-to-end but ranked #26. The FTP case is shakier still: the detector flagged a nearby overflow and missed the exact site the public exploit crashes. The last is detected but never delivered to a prompt at all. And neither of the two genuine deliveries is a solver proof; both are pushed into the operator's queue by a post-processor, the honest inverse of the false positive below, which the solver actually did prove. Every one of these detectors was written against a binary whose bug was already public.</p>
+
+  <h2>Synthetic: the harness, not the field</h2>
+  <p class="sc-lede">These numbers say the plumbing works. They say nothing about finding real bugs, and two of the three targets were written by us.</p>
+  <div class="sc-table-wrap">
+    <table class="sc">
+      <thead><tr><th>Corpus</th><th>What it is</th><th>Result</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td class="cve">Juliet C</td><td>a public synthetic memory-safety test set, 462 cases</td><td><span class="v v-syn">synthetic</span> 96.5% recall; use-after-free and double-free hold at 100% as the standing regression gate</td><td class="num nr">n/r</td></tr>
+        <tr><td class="cve">MFC dialog</td><td>a Win32 dialog app we wrote ourselves</td><td><span class="v v-syn">synthetic</span> the real bug becomes prompt #1, on a target built to be found</td><td class="num nr">n/r</td></tr>
+        <tr><td class="cve">.NET corpus</td><td>hand-authored C# samples, 29 cases</td><td><span class="v v-syn">synthetic</span> 100% pattern recall, which the project's own note is careful to call a measure of pattern-matching, not real precision</td><td class="num nr">n/r</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>One that wasn't real</h2>
+  <p class="sc-lede">Kept here on purpose. The most dangerous output a tool like this produces is a wrong answer that looks submittable.</p>
+  <div class="sc-table-wrap">
+    <table class="sc">
+      <thead><tr><th>Case</th><th>Target</th><th>Claimed</th><th>Result</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td class="cve">the finding<br>that wasn't</td><td>an industrial polling application</td><td>local-file code execution via a deserializer</td><td><span class="v v-fp">false positive</span> a HIGH-confidence, solver-proven prompt, refuted by the adversarial reviewer on reachability: dead-linked library code with zero callers and zero references</td><td class="num nr">n/r</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sc-note">This one refutation is why a reachability filter exists at all. Turned loose on the backlog, it demoted 19 of 50 previously "Golden" prompts, and every one of the 19, checked by hand, was safe. The story is Post 10.</p>
+
+</section>
+
+<footer class="home-foot">
+  <div class="rule">
+    Compiled by Claude from the project's blind-backtest reports, calibration files, and commit history, and kept current as detection changes. Numbers are exact; targets with public CVEs are named and linked. Time is the per-binary analysis wall-clock recorded in the run logs; <em>n/r</em> marks a target whose wall-clock the project did not retain, never an invented number. Read the diary at <a href="index.html">The MUGEN Diaries</a>.
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
