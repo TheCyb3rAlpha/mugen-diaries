@@ -188,6 +188,8 @@ h1 {
 .body strong { font-weight: 700; color: var(--ink); }
 .body p a, .body li a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.15s; }
 .body p a:hover, .body li a:hover { border-bottom-color: var(--accent); }
+.dek a, figcaption a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.dek a:hover, figcaption a:hover { border-bottom-color: var(--accent); }
 code {
   font-family: var(--mono); font-size: 0.82em;
   background: var(--rule-soft); color: var(--ink);
