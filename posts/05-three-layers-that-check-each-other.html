@@ -6,7 +6,7 @@
 <title>MUGEN Diaries · 05 · Three layers that check each other</title>
 <meta name="description" content="Ghidra finds what an attacker can reach, a Z3 solver proves what is actually feasible, and an LLM judges what is a real bug. Why each layer exists mostly to keep the next one honest. v0.11 to v0.13. Post 05 of the MUGEN Diaries.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='12'%20fill='none'%20stroke='%2379c2db'%20stroke-width='2'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='5.5'%20fill='%23080a12'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="../assets/style.css?v=20260727c">
+<link rel="stylesheet" href="../assets/style.css?v=20260727d">
 </head>
 <body>
 
@@ -73,7 +73,7 @@
 <main class="wrap">
   <div class="body">
 
-    <p class="first">The last post ended with the taint finally crossing boundaries, and a warning: following data further just means finding <em>more</em> places it could go, and most of those are not bugs. A tracker that reaches a dangerous call has proven one thing only, that a path exists on paper. It has not proven the path is triggerable, and it has not proven the thing at the end is actually dangerous in context. Those are two different questions, and neither one is answerable by the layer that asks them. So the tool grew two more layers, each built to catch what the one before it gets wrong.</p>
+    <p class="first"><a href="04-teaching-it-to-follow-data.html">The last post</a> ended with the taint finally crossing boundaries, and a warning: following data further just means finding <em>more</em> places it could go, and most of those are not bugs. A tracker that reaches a dangerous call has proven one thing only, that a path exists on paper. It has not proven the path is triggerable, and it has not proven the thing at the end is actually dangerous in context. Those are two different questions, and neither one is answerable by the layer that asks them. So the tool grew two more layers, each built to catch what the one before it gets wrong.</p>
 
     <div class="sc-stats">
       <div class="sc-stat"><div class="n">3</div><div class="l">layers, each checking the next</div></div>
@@ -90,7 +90,7 @@
 <span class="kw">if</span> (size &lt; <span class="num">256</span>)                 <span class="cm">// a bounds check: a "gate" on the tainted size</span>
     <span class="fn">memcpy</span>(buf, src, size);   <span class="cm">// reachable, but can it actually overflow?</span></pre>
 
-    <p>The static layer, doing what post 04 taught it, follows the tainted <code>size</code> straight to the <code>memcpy</code> and raises a flag. It is not wrong that the path exists. It is wrong that the path matters, because the <code>if</code> right above makes the overflow impossible, and the tracker cannot read the <code>if</code>. To static taint, a bounds check is invisible; to an attacker, it is the whole game. This is the difference between <em>reachability</em>, which the first layer proves, and <em>feasibility</em>, which it cannot even ask about. Left alone, the layer buries every real finding under a pile of paths that a single comparison already closed.</p>
+    <p>The static layer, doing what <a href="04-teaching-it-to-follow-data.html">post 04</a> taught it, follows the tainted <code>size</code> straight to the <code>memcpy</code> and raises a flag. It is not wrong that the path exists. It is wrong that the path matters, because the <code>if</code> right above makes the overflow impossible, and the tracker cannot read the <code>if</code>. To static taint, a bounds check is invisible; to an attacker, it is the whole game. This is the difference between <em>reachability</em>, which the first layer proves, and <em>feasibility</em>, which it cannot even ask about. Left alone, the layer buries every real finding under a pile of paths that a single comparison already closed.</p>
 
     <h2>Layer two: a solver that reads the checks</h2>
 
@@ -196,7 +196,7 @@
       <div class="sc-stat"><div class="n">6 / 11</div><div class="l">right function surfaced, no chain</div></div>
     </div>
 
-    <p>Read them without flinching. On the binaries it could actually analyze, the tool pointed at the right function more often than not, and drew a complete, deliverable source-to-sink chain not once. It found the neighbourhood; it did not find the bug. That is the distance between a stack that works on paper and one that finds real bugs, and closing it is most of what the rest of this diary is about; the <a href="../scorecard.html">scorecard</a> breaks every one of those numbers down in full. But first there was a real target to point all of this at, a Windows kernel driver with a known flaw, and the next post is about what happened when we did.</p>
+    <p>Read them without flinching. On the binaries it could actually analyze, the tool pointed at the right function more often than not, and drew a complete, deliverable source-to-sink chain not once. It found the neighbourhood; it did not find the bug. That is the distance between a stack that works on paper and one that finds real bugs, and closing it is most of what the rest of this diary is about; the <a href="../scorecard.html">scorecard</a> breaks every one of those numbers down in full. But first there was a real target to point all of this at, a Windows kernel driver with a known flaw, and <a href="06-afd-sys-zero-to-twelve.html">the next post</a> is about what happened when we did.</p>
 
     <div class="endnote">
       <nav class="postnav" aria-label="Post navigation">
@@ -225,6 +225,6 @@
   </div>
 </div>
 
-<script src="../assets/app.js?v=20260727c"></script>
+<script src="../assets/app.js?v=20260727d"></script>
 </body>
 </html>

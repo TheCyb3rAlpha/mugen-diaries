@@ -6,7 +6,7 @@
 <title>MUGEN Diaries · 06 · afd.sys, zero to twelve</title>
 <meta name="description" content="The first real target: a Windows kernel driver with a known use-after-free. What '12 of 15' meant, why I had to take it back to 9, and the three asterisks on the whole result. CVE-2024-38141. Post 06 of the MUGEN Diaries.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='12'%20fill='none'%20stroke='%2379c2db'%20stroke-width='2'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='5.5'%20fill='%23080a12'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="../assets/style.css?v=20260727c">
+<link rel="stylesheet" href="../assets/style.css?v=20260727d">
 </head>
 <body>
 
@@ -84,7 +84,7 @@
 
     <h2>The bug with no dangerous call</h2>
 
-    <p>The target was afd.sys, and the flaw was CVE-2024-38141, a use-after-free. Everything this tool had learned to hunt so far was, in the end, a dangerous <em>call</em>: a <code>memcpy</code>, a <code>strcpy</code>, an allocation sized from attacker input. This bug has none of those. The functions the vendor patched, the ones that actually hold the vulnerability, do their damage in object <em>lifecycle</em>: create, close, dispatch. There is no alarming API to point at. The top patched function has 0 dangerous calls in it and is nonetheless the bug. That is exactly the shape the typestate work from the last post was built for, a good pointer used at the wrong time rather than a bad value reaching a sink, and it is the reason a tool that spent its first 4 posts hunting sinks would have walked straight past this one.</p>
+    <p>The target was afd.sys, and the flaw was CVE-2024-38141, a use-after-free. Everything this tool had learned to hunt so far was, in the end, a dangerous <em>call</em>: a <code>memcpy</code>, a <code>strcpy</code>, an allocation sized from attacker input. This bug has none of those. The functions the vendor patched, the ones that actually hold the vulnerability, do their damage in object <em>lifecycle</em>: create, close, dispatch. There is no alarming API to point at. The top patched function has 0 dangerous calls in it and is nonetheless the bug. That is exactly the shape the typestate work from <a href="05-three-layers-that-check-each-other.html">the last post</a> was built for, a good pointer used at the wrong time rather than a bad value reaching a sink, and it is the reason a tool that spent its first 4 posts hunting sinks would have walked straight past this one.</p>
 
     <div class="aside">
       <span class="tag">Worth knowing</span>
@@ -190,6 +190,6 @@
   </div>
 </div>
 
-<script src="../assets/app.js?v=20260727c"></script>
+<script src="../assets/app.js?v=20260727d"></script>
 </body>
 </html>

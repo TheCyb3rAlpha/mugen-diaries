@@ -6,7 +6,7 @@
 <title>MUGEN Diaries · 02 · Confidently wrong</title>
 <meta name="description" content="Parallel decompilation was the obvious optimization. A small test proved it worked. A bigger test proved it didn't. Post 02 of the MUGEN Diaries.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='12'%20fill='none'%20stroke='%2379c2db'%20stroke-width='2'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='5.5'%20fill='%23080a12'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="../assets/style.css?v=20260727c">
+<link rel="stylesheet" href="../assets/style.css?v=20260727d">
 </head>
 <body>
 
@@ -144,7 +144,7 @@
 
     <h2>What actually shipped</h2>
 
-    <p>So v0.3.0 shipped a deletion. The parallel code came out, and the file went back to exactly what it had been the day before. The only thing kept was a win that had nothing to do with parallelism: more heap helps large sequential runs too, so the memory bump stayed. The real fix for decompile speed came later and looked nothing like my first idea, and it started by doing less work rather than more. Version 0.4 cleared the ground first, with binary-hash dedup, third-party filtering, and a triage gate so the cheap binaries skip Ghidra entirely; then v0.5 built parallelism the right way, across separate processes instead of inside one. That is where the next post picks up.</p>
+    <p>So v0.3.0 shipped a deletion. The parallel code came out, and the file went back to exactly what it had been the day before. The only thing kept was a win that had nothing to do with parallelism: more heap helps large sequential runs too, so the memory bump stayed. The real fix for decompile speed came later and looked nothing like my first idea, and it started by doing less work rather than more. Version 0.4 cleared the ground first, with binary-hash dedup, third-party filtering, and a triage gate so the cheap binaries skip Ghidra entirely; then v0.5 built parallelism the right way, across separate processes instead of inside one. That is where <a href="03-the-work-you-dont-do.html">the next post</a> picks up.</p>
 
     <p class="pull">A measurement that agrees with you is not proof. The small test that flatters your idea is the most dangerous data you get, because it feels like permission to stop looking.</p>
 
@@ -177,6 +177,6 @@
   </div>
 </div>
 
-<script src="../assets/app.js?v=20260727c"></script>
+<script src="../assets/app.js?v=20260727d"></script>
 </body>
 </html>
