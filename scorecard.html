@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MUGEN Diaries · The Scorecard</title>
-<meta name="description" content="What MUGEN has actually caught, honestly: blind results (zero delivered source-to-sink chains on hand-checked CVE sites), development-target end-to-end wins, synthetic numbers, and one false positive.">
+<meta name="description" content="What MUGEN has actually caught, honestly: blind results (0 delivered source-to-sink chains on hand-checked CVE sites), development-target end-to-end wins, synthetic numbers, and one false positive.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='12'%20fill='none'%20stroke='%2379c2db'%20stroke-width='2'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='5.5'%20fill='%23080a12'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=20260727c">
 </head>
 <body>
 
@@ -30,7 +30,7 @@
   <div class="body">
     <p class="first">A tool is worth exactly what it finds on something it has never seen. So this page keeps two kinds of result apart and never blurs them. The first is the <em>blind</em> test: real binaries, the known vulnerability hidden from the tool, no human steering. The second is the honest asterisk on every impressive demo, a detector built <em>after</em> the bug was known, aimed at the one binary it was meant to catch. Both are here. The gap is the story.</p>
 
-    <p class="pull">Blind and answer-hidden, MUGEN delivered zero complete source-to-sink chains on the three CVE sites checked by hand. Every end-to-end catch it can show was engineered against a binary whose bug was already known.</p>
+    <p class="pull">Blind and answer-hidden, MUGEN delivered 0 complete source-to-sink chains on the three CVE sites checked by hand. Every end-to-end catch it can show was engineered against a binary whose bug was already known.</p>
 
     <div class="sc-legend" aria-hidden="false">
       <span><span class="v v-full">full chain</span> source to sink, delivered</span>
@@ -73,7 +73,7 @@
         <rect class="bar-miss" x="84" y="135" width="200" height="22" rx="4"/>
         <text class="c-num" x="310" y="150" text-anchor="end">5</text>
       </svg>
-      <p class="c-cap">Not one produced a complete chain. Surfaced plus partial, six in all, means the right function was reached; the five misses found nothing at the site at all.</p>
+      <p class="c-cap">Not one produced a complete chain. Surfaced plus partial, 6 in all, means the right function was reached; the 5 misses found nothing at the site at all.</p>
     </div>
 
     <div class="chart">
@@ -89,7 +89,7 @@
         <text class="c-cat" x="150" y="76">timed out</text>
         <text class="c-cat" x="238" y="76">anchored &amp; scored</text>
       </svg>
-      <p class="c-cap">Only eleven of the forty-one binaries could be anchored at all. Twenty-six were stripped past the point the tool could even name the vulnerable function, which describes most real software in the wild.</p>
+      <p class="c-cap">Only 11 of the 40-one binaries could be anchored at all. 20-6 were stripped past the point the tool could even name the vulnerable function, which describes most real software in the wild.</p>
     </div>
 
     <div class="chart wide">
@@ -105,13 +105,13 @@
         <rect class="bar-full" x="8" y="104" width="258" height="24" rx="5"/>
         <text class="c-num" x="312" y="122" text-anchor="end">2</text>
       </svg>
-      <p class="c-cap">The distance between these two bars is the honest measure of the tool. Blind, it delivered zero complete source-to-sink chains. Every complete chain it can show was engineered to catch a bug that was already public.</p>
+      <p class="c-cap">The distance between these two bars is the honest measure of the tool. Blind, it delivered 0 complete source-to-sink chains. Every complete chain it can show was engineered to catch a bug that was already public.</p>
     </div>
 
   </div>
 
   <h2>The honest bar: a blind backtest</h2>
-  <p class="sc-lede">Real third-party binaries, each with a known CVE the tool was not told about. Static analysis only, zero model tokens. Forty-two on the manifest, forty-one acquired; of those, twenty-six were stripped past the point the tool could even name the vulnerable function, four timed out, and eleven were anchored and scored. Here are all eleven.</p>
+  <p class="sc-lede">Real third-party binaries, each with a known CVE the tool was not told about. Static analysis only, 0 model tokens. 42 on the manifest, 40-one acquired; of those, 20-6 were stripped past the point the tool could even name the vulnerable function, 4 timed out, and 11 were anchored and scored. Here are all 11.</p>
 
   <div class="sc-stats">
     <div class="sc-stat"><div class="n bad">0 / 3</div><div class="l">complete source-to-sink chains, hand-verified</div></div>
@@ -131,14 +131,14 @@
         <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-29457" target="_blank" rel="noopener">CVE-2021-29457</a></td><td>Exiv2 (image metadata)</td><td>CWE-122 heap overflow</td><td><span class="v v-part">partial</span> sinks present at the anchor but never ranked or prompted</td><td class="num">448s</td></tr>
         <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2015-8863" target="_blank" rel="noopener">CVE-2015-8863</a></td><td>jq (JSON tool)</td><td>CWE-122</td><td><span class="v v-part">partial</span> 13 sinks at the site, but the ranking table came back empty</td><td class="num">313s</td></tr>
         <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-7317" target="_blank" rel="noopener">CVE-2019-7317</a></td><td>libpng (PNG decoder)</td><td>CWE-416 use-after-free</td><td><span class="v v-miss">miss</span> the free was flagged, but no UAF chain was ever assembled; entry point sank to rank 180 of 504</td><td class="num">65s</td></tr>
-        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-2800" target="_blank" rel="noopener">CVE-2017-2800</a></td><td>wolfSSL (TLS)</td><td>CWE-787</td><td><span class="v v-miss">miss</span> zero dangerous calls at the anchor; sink class not modeled</td><td class="num">246s</td></tr>
-        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-28805" target="_blank" rel="noopener">CVE-2022-28805</a></td><td>Lua (interpreter)</td><td>CWE-125</td><td><span class="v v-miss">miss</span> zero sinks at the vulnerable function</td><td class="num">345s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-2800" target="_blank" rel="noopener">CVE-2017-2800</a></td><td>wolfSSL (TLS)</td><td>CWE-787</td><td><span class="v v-miss">miss</span> 0 dangerous calls at the anchor; sink class not modeled</td><td class="num">246s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-28805" target="_blank" rel="noopener">CVE-2022-28805</a></td><td>Lua (interpreter)</td><td>CWE-125</td><td><span class="v v-miss">miss</span> 0 sinks at the vulnerable function</td><td class="num">345s</td></tr>
         <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2016-7480" target="_blank" rel="noopener">CVE-2016-7480</a></td><td>PHP (engine)</td><td>CWE-843 type confusion</td><td><span class="v v-miss">miss</span> type confusion is not a modeled bug class</td><td class="num">1080s</td></tr>
-        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-1311" target="_blank" rel="noopener">CVE-2018-1311</a></td><td>Xerces-C (XML parser)</td><td>CWE-416 use-after-free</td><td><span class="v v-miss">miss</span> zero free events at the anchor</td><td class="num">325s</td></tr>
+        <tr><td class="cve"><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-1311" target="_blank" rel="noopener">CVE-2018-1311</a></td><td>Xerces-C (XML parser)</td><td>CWE-416 use-after-free</td><td><span class="v v-miss">miss</span> 0 free events at the anchor</td><td class="num">325s</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="sc-note">Not one delivered a complete source-to-sink path to the operator. On the three sites checked by hand, the count was <strong>zero</strong>. And these eleven are the easy slice: the twenty-six that were dropped were stripped of symbols, which describes most real software in the wild. The zero-token figure is literal: this run generated the operator's prompts without ever calling the model. The model, when it does run, only re-checks what the static pipeline already surfaced, so it could not have rescued a site the pipeline missed.</p>
+  <p class="sc-note">Not one delivered a complete source-to-sink path to the operator. On the three sites checked by hand, the count was <strong>0</strong>. And these 11 are the easy slice: the 20-6 that were dropped were stripped of symbols, which describes most real software in the wild. The 0-token figure is literal: this run generated the operator's prompts without ever calling the model. The model, when it does run, only re-checks what the static pipeline already surfaced, so it could not have rescued a site the pipeline missed.</p>
 
   <h2>A kernel driver, calibrated</h2>
   <p class="sc-lede">A single real target where the answer was known in advance, run with the debug symbols the tool almost never has in the field.</p>
@@ -150,7 +150,7 @@
       </tbody>
     </table>
   </div>
-  <p class="sc-note"><strong>Surfaced</strong> means the patched function reached the top of the pile. It does not mean a source-to-sink chain was drawn. Twelve surfaced, two fell past the ranking cut, and one missed on a name mismatch. And this ran with a version-matched symbol file that, by the project's own note, multiplies the detector's reach many times over what a stripped binary allows.</p>
+  <p class="sc-note"><strong>Surfaced</strong> means the patched function reached the top of the pile. It does not mean a source-to-sink chain was drawn. 12 surfaced, two fell past the ranking cut, and one missed on a name mismatch. And this ran with a version-matched symbol file that, by the project's own note, multiplies the detector's reach many times over what a stripped binary allows.</p>
 
   <h2>End-to-end, but not blind</h2>
   <p class="sc-lede">End-to-end catches on genuine public exploit-database cases, delivered to the operator: at the #1 prompt in one case, lower in the queue or through a dedicated flag in the others. The caveat is the whole point of the section header. Each detector was built <em>after</em> the bug was known and aimed at that specific binary. This is "can the tool be made to catch a known bug end-to-end," not "point it at something new."</p>
@@ -186,7 +186,7 @@
     <table class="sc">
       <thead><tr><th>Case</th><th>Target</th><th>Claimed</th><th>Result</th><th>Time</th></tr></thead>
       <tbody>
-        <tr><td class="cve">the finding<br>that wasn't</td><td>an industrial polling application</td><td>local-file code execution via a deserializer</td><td><span class="v v-fp">false positive</span> a HIGH-confidence, solver-proven prompt, refuted by the adversarial reviewer on reachability: dead-linked library code with zero callers and zero references</td><td class="num nr">n/r</td></tr>
+        <tr><td class="cve">the finding<br>that wasn't</td><td>an industrial polling application</td><td>local-file code execution via a deserializer</td><td><span class="v v-fp">false positive</span> a HIGH-confidence, solver-proven prompt, refuted by the adversarial reviewer on reachability: dead-linked library code with 0 callers and 0 references</td><td class="num nr">n/r</td></tr>
       </tbody>
     </table>
   </div>
@@ -200,6 +200,6 @@
   </div>
 </footer>
 
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=20260727c"></script>
 </body>
 </html>

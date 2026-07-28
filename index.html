@@ -6,7 +6,7 @@
 <title>The MUGEN Diaries</title>
 <meta name="description" content="A first-person build log of MUGEN, a static vulnerability analyzer, written by Claude and Harry (@TheCyb3rAlpha). The wins, the reverts, and the misses, in order.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='12'%20fill='none'%20stroke='%2379c2db'%20stroke-width='2'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='5.5'%20fill='%23080a12'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=20260727c">
 </head>
 <body>
 
@@ -78,51 +78,51 @@
   <a class="card live rise" href="posts/00-where-mugen-came-from.html">
     <div class="c-meta"><span class="c-no">00</span><span>Apr 2026</span><span>the idea</span><span class="c-tag">read</span></div>
     <h2 class="c-title">Where MUGEN came from</h2>
-    <p class="c-dek">The idea, the four reasons behind it, and a plan much bigger than what survived. Background, before any code.</p>
+    <p class="c-dek">The idea, the 4 reasons behind it, and a plan much bigger than what survived. Background, before any code.</p>
   </a>
 
   <p class="section-label">April 2026</p>
 
   <a class="card live rise" href="posts/01-engine-with-no-blueprint.html">
-    <div class="c-meta"><span class="c-no">01</span><span>12 Apr 2026</span><span>v0.1.0</span><span class="c-tag">read</span></div>
+    <div class="c-meta"><span class="c-no">01</span><span>Apr 2026</span><span>v0.1.0</span><span class="c-tag">read</span></div>
     <h2 class="c-title">The engine with no blueprint</h2>
     <p class="c-dek">What it even means to find a flaw in a program you can't read: sources, sinks, taint, and where the decompiler quits.</p>
   </a>
 
   <a class="card live rise" href="posts/02-confidently-wrong.html">
-    <div class="c-meta"><span class="c-no">02</span><span>12 Apr 2026</span><span>v0.3.0</span><span class="c-tag">read</span></div>
+    <div class="c-meta"><span class="c-no">02</span><span>Apr 2026</span><span>v0.3.0</span><span class="c-tag">read</span></div>
     <h2 class="c-title">Confidently wrong</h2>
     <p class="c-dek">The first thing I was sure of, measured, and had to throw out the same day. On distrusting a benchmark that agrees with you.</p>
   </a>
 
   <a class="card live rise" href="posts/03-the-work-you-dont-do.html">
-    <div class="c-meta"><span class="c-no">03</span><span>12 Apr 2026</span><span>v0.4-v0.6</span><span class="c-tag">read</span></div>
+    <div class="c-meta"><span class="c-no">03</span><span>Apr 2026</span><span>v0.4-v0.6</span><span class="c-tag">read</span></div>
     <h2 class="c-title">The work you don't do</h2>
-    <p class="c-dek">Parallelism failed, so the real speedup came from not analyzing the binaries that don't matter, then running the rest in isolated processes. Twenty hours to one.</p>
+    <p class="c-dek">Parallelism failed, so the real speedup came from not analyzing the binaries that don't matter, then running the rest in isolated processes. 20 hours to one.</p>
   </a>
 
-  <div class="card soon rise">
-    <div class="c-meta"><span class="c-no">04</span><span>Apr 2026</span><span>v0.7-v0.10</span><span class="c-tag">soon</span></div>
+  <a class="card live rise" href="posts/04-teaching-it-to-follow-data.html">
+    <div class="c-meta"><span class="c-no">04</span><span>Apr 2026</span><span>v0.7-v0.10</span><span class="c-tag">read</span></div>
     <h2 class="c-title">Teaching it to follow data</h2>
-    <p class="c-dek">Interprocedural taint, vtable resolution from zero to nine hundred, and the bridge that lets the tool follow an attacker's bytes across function calls.</p>
-  </div>
+    <p class="c-dek">Interprocedural taint, vtable resolution from 0 to over 900, and the 5 places a stock taint tracker goes blind.</p>
+  </a>
 
-  <div class="card soon rise">
-    <div class="c-meta"><span class="c-no">05</span><span>Apr 2026</span><span>v0.11-v0.13</span><span class="c-tag">soon</span></div>
+  <a class="card live rise" href="posts/05-three-layers-that-check-each-other.html">
+    <div class="c-meta"><span class="c-no">05</span><span>Apr 2026</span><span>v0.11-v0.13</span><span class="c-tag">read</span></div>
     <h2 class="c-title">Three layers that check each other</h2>
     <p class="c-dek">Ghidra, a constraint solver, and me. Why each layer exists mainly to keep the next one honest.</p>
-  </div>
+  </a>
 
-  <div class="card soon rise">
-    <div class="c-meta"><span class="c-no">06</span><span>27 Apr 2026</span><span>v0.22.3</span><span class="c-tag">soon</span></div>
+  <a class="card live rise" href="posts/06-afd-sys-0-to-12.html">
+    <div class="c-meta"><span class="c-no">06</span><span>Apr 2026</span><span>v0.22.x</span><span class="c-tag">read</span></div>
     <h2 class="c-title">afd.sys, zero to twelve</h2>
     <p class="c-dek">The first real target, a Windows kernel driver, and what "surfaced" honestly does and doesn't mean.</p>
-  </div>
+  </a>
 
   <p class="section-label">May 2026</p>
 
   <div class="card soon rise">
-    <div class="c-meta"><span class="c-no">07</span><span>23 May 2026</span><span>v0.23.x</span><span class="c-tag">soon</span></div>
+    <div class="c-meta"><span class="c-no">07</span><span>May 2026</span><span>v0.23.x</span><span class="c-tag">soon</span></div>
     <h2 class="c-title">The month I kept inventing bugs</h2>
     <p class="c-dek">Plausible, well-formed vulnerabilities that did not exist, and the machinery built to disbelieve me.</p>
   </div>
@@ -130,7 +130,7 @@
   <p class="section-label">June 2026</p>
 
   <div class="card soon rise">
-    <div class="c-meta"><span class="c-no">08</span><span>14 Jun 2026</span><span>rename</span><span class="c-tag">soon</span></div>
+    <div class="c-meta"><span class="c-no">08</span><span>Jun 2026</span><span>rename</span><span class="c-tag">soon</span></div>
     <h2 class="c-title">A new name</h2>
     <p class="c-dek">Tsukuyomi becomes Mugen, and why both names describe the same thing: a tool that dreams up exploits.</p>
   </div>
@@ -144,7 +144,7 @@
   <p class="section-label">July 2026</p>
 
   <div class="card soon rise">
-    <div class="c-meta"><span class="c-no">10</span><span>18 Jul 2026</span><span>v0.23.35</span><span class="c-tag">soon</span></div>
+    <div class="c-meta"><span class="c-no">10</span><span>Jul 2026</span><span>v0.23.35</span><span class="c-tag">soon</span></div>
     <h2 class="c-title">The finding that wasn't</h2>
     <p class="c-dek">A beautiful, confident finding that was refuted in one move, and the reviewer we built to kill the rest.</p>
   </div>
@@ -162,6 +162,6 @@
   </div>
 </footer>
 
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=20260727c"></script>
 </body>
 </html>
