@@ -6,7 +6,7 @@
 <title>MUGEN Diaries · 05 · Three layers that check each other</title>
 <meta name="description" content="Ghidra finds what an attacker can reach, a Z3 solver proves what is actually feasible, and an LLM judges what is a real bug. Why each layer exists mostly to keep the next one honest. v0.11 to v0.13. Post 05 of the MUGEN Diaries.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Ccircle%20cx='16'%20cy='16'%20r='12'%20fill='none'%20stroke='%2379c2db'%20stroke-width='2'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='5.5'%20fill='%23080a12'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="../assets/style.css?v=20260727d">
+<link rel="stylesheet" href="../assets/style.css?v=20260729a">
 </head>
 <body>
 
@@ -26,20 +26,23 @@
         <a class="post-link" href="03-the-work-you-dont-do.html"><span class="pl-no">03</span><span class="pl-t">The work you don't do</span></a>
         <a class="post-link" href="04-teaching-it-to-follow-data.html"><span class="pl-no">04</span><span class="pl-t">Teaching it to follow data</span></a>
         <a class="post-link current" href="05-three-layers-that-check-each-other.html"><span class="pl-no">05</span><span class="pl-t">Three layers that check each other</span><span class="pl-tag">here</span></a>
-        <a class="post-link" href="06-afd-sys-zero-to-twelve.html"><span class="pl-no">06</span><span class="pl-t">afd.sys, zero to twelve</span></a>
+        <span class="post-link soon"><span class="pl-no">06</span><span class="pl-t">New kinds of wrong</span><span class="pl-tag">soon</span></span>
+        <span class="post-link soon"><span class="pl-no">07</span><span class="pl-t">Poking back</span><span class="pl-tag">soon</span></span>
+        <a class="post-link" href="08-afd-sys-zero-to-twelve.html"><span class="pl-no">08</span><span class="pl-t">afd.sys, zero to twelve</span></a>
       </div>
       <div class="month">
         <span class="mo">May 2026</span>
-        <span class="post-link soon"><span class="pl-no">07</span><span class="pl-t">The month I kept inventing bugs</span><span class="pl-tag">soon</span></span>
+        <span class="post-link soon"><span class="pl-no">09</span><span class="pl-t">The month I kept inventing bugs</span><span class="pl-tag">soon</span></span>
       </div>
       <div class="month">
         <span class="mo">June 2026</span>
-        <span class="post-link soon"><span class="pl-no">08</span><span class="pl-t">A new name</span><span class="pl-tag">soon</span></span>
-        <span class="post-link soon"><span class="pl-no">09</span><span class="pl-t">The night the numbers came back</span><span class="pl-tag">soon</span></span>
+        <span class="post-link soon"><span class="pl-no">10</span><span class="pl-t">A new name</span><span class="pl-tag">soon</span></span>
+        <span class="post-link soon"><span class="pl-no">11</span><span class="pl-t">The night the numbers came back</span><span class="pl-tag">soon</span></span>
       </div>
       <div class="month">
         <span class="mo">July 2026</span>
-        <span class="post-link soon"><span class="pl-no">10</span><span class="pl-t">The finding that wasn't</span><span class="pl-tag">soon</span></span>
+        <span class="post-link soon"><span class="pl-no">12</span><span class="pl-t">The finding that wasn't</span><span class="pl-tag">soon</span></span>
+        <a class="post-link" href="the-right-bug-wrong-name.html"><span class="pl-no">TBD</span><span class="pl-t">The right bug, the wrong name</span></a>
       </div>
     </nav>
   </aside>
@@ -196,7 +199,7 @@
       <div class="sc-stat"><div class="n">6 / 11</div><div class="l">right function surfaced, no chain</div></div>
     </div>
 
-    <p>Read them without flinching. On the binaries it could actually analyze, the tool pointed at the right function more often than not, and drew a complete, deliverable source-to-sink chain not once. It found the neighbourhood; it did not find the bug. That is the distance between a stack that works on paper and one that finds real bugs, and closing it is most of what the rest of this diary is about; the <a href="../scorecard.html">scorecard</a> breaks every one of those numbers down in full. But first there was a real target to point all of this at, a Windows kernel driver with a known flaw, and <a href="06-afd-sys-zero-to-twelve.html">the next post</a> is about what happened when we did.</p>
+    <p>Read them without flinching. On the binaries it could actually analyze, the tool pointed at the right function more often than not, and drew a complete, deliverable source-to-sink chain not once. It found the neighbourhood; it did not find the bug. That is the distance between a stack that works on paper and one that finds real bugs, and closing it is most of what the rest of this diary is about; the <a href="../scorecard.html">scorecard</a> breaks every one of those numbers down in full. Closing it starts with widening what the engine can even see, and <a href="06-new-kinds-of-wrong.html">the next post</a> is a day and a half in which it learned to catch race conditions, follow taint across whole call graphs, and, for the first time, read a kernel driver.</p>
 
     <div class="endnote">
       <nav class="postnav" aria-label="Post navigation">
@@ -204,9 +207,9 @@
           <span class="pn-dir">← Previous</span>
           <span class="pn-t">04 · Teaching it to follow data</span>
         </a>
-        <a class="pn pn-next" href="06-afd-sys-zero-to-twelve.html">
+        <a class="pn pn-next" href="06-new-kinds-of-wrong.html">
           <span class="pn-dir">Next →</span>
-          <span class="pn-t">06 · afd.sys, 0 to 12</span>
+          <span class="pn-t">06 · New kinds of wrong</span>
         </a>
       </nav>
 
@@ -225,6 +228,6 @@
   </div>
 </div>
 
-<script src="../assets/app.js?v=20260727d"></script>
+<script src="../assets/app.js?v=20260729a"></script>
 </body>
 </html>

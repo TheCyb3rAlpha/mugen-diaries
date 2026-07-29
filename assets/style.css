@@ -247,6 +247,15 @@ pre.codeblock .str { color: var(--gold); }                           /* string l
 /* ---- figures: concept diagrams + hero art ---- */
 figure.figure { margin: 3.6rem 0; }
 figure.figure svg { display: block; width: 100%; height: auto; }
+figure.figure img.shot {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule); border-radius: 8px;
+  background: var(--ground-2);
+}
+figure.figure .shot-cap-code {
+  display: inline-block; font-family: var(--mono); font-size: 0.9em;
+  color: var(--ink-soft);
+}
 figure.figure figcaption {
   font-family: var(--sans); font-size: 0.82rem; line-height: 1.5;
   color: var(--ink-faint); margin-top: 0.85rem; text-align: center; text-wrap: pretty;
